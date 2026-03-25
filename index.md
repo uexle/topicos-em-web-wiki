@@ -5,7 +5,7 @@ title: Início
 
 ## Artigos da wiki
 
-Novos arquivos `.md` na pasta [`_wiki/`](_wiki/) passam a aparecer nesta lista automaticamente após o build (no GitHub Pages, após o push).
+Novos arquivos `.md` na pasta `_wiki/` passam a aparecer nesta lista automaticamente após o build (no GitHub Pages, após o push).
 
 <ul class="wiki-list">
 {% assign pages = site.wiki | sort: 'title' %}

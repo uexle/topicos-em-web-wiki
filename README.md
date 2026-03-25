@@ -21,14 +21,14 @@ Site estático com [Jekyll](https://jekyllrb.com/), pronto para [GitHub Pages](h
    - **Repositório de usuário** `usuario.github.io`: `https://usuario.github.io/`
    - **Repositório de projeto** `usuario/repo`: `https://usuario.github.io/repo/`
 
-Se o site for de **projeto**, edite `_config.yml` e ajuste:
+Se o site for de **projeto** (ex.: `https://uexle.github.io/topicos-em-web-wiki/`), **é obrigatório** definir `url` e `baseurl`. Sem `baseurl`, o tema Minima aponta CSS/JS para a raiz do domínio e a página fica sem estilo.
 
 ```yaml
-url: "https://usuario.github.io"
-baseurl: "/nome-do-repo"
+url: "https://SEU-USUARIO.github.io"
+baseurl: "/NOME-DO-REPO"   # mesmo nome do repositório, com barra inicial, sem barra final
 ```
 
-Assim os links gerados por `relative_url` continuam corretos.
+Se renomear o repositório, atualize `baseurl` para o novo nome.
 
 ## Incluir um artigo novo
 
