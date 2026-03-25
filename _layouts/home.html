@@ -1,0 +1,46 @@
+---
+layout: default
+---
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__inner">
+    <p class="hero__eyebrow">{{ site.course.institution }}</p>
+    <h1 id="hero-title" class="hero__title">{{ site.course.name }}</h1>
+    <div class="hero__lead">{{ site.course.lead | markdownify }}</div>
+    <div class="hero__actions">
+      <a class="btn btn--primary" href="#artigos">Ver artigos</a>
+      <a class="btn btn--ghost" href="{{ site.repo_url }}" target="_blank" rel="noopener noreferrer">Repositório</a>
+    </div>
+  </div>
+</section>
+
+<div class="content-block">
+  {{ content }}
+</div>
+
+<section id="artigos" class="articles-section" aria-labelledby="articles-heading">
+  <div class="articles-section__head">
+    <h2 id="articles-heading" class="section-title">Artigos da wiki</h2>
+    <p class="section-desc">Inclua um arquivo <code>.md</code> em <code>_wiki/</code> com front matter mínimo (<code>title</code>) e ele aparece aqui após o deploy.</p>
+  </div>
+
+  {% if site.wiki.size == 0 %}
+    <p class="empty-state"><em>Nenhum artigo ainda. Adicione arquivos em <code>_wiki/</code>.</em></p>
+  {% else %}
+    <ul class="article-grid" role="list">
+      {% assign pages = site.wiki | sort: 'order' %}
+      {% for p in pages %}
+        <li>
+          <a class="article-card" href="{{ p.url | relative_url }}">
+            <span class="article-card__title">{{ p.title }}</span>
+            {% if p.summary %}
+              <span class="article-card__summary">{{ p.summary }}</span>
+            {% else %}
+              <span class="article-card__summary article-card__summary--muted">Abrir página</span>
+            {% endif %}
+            <span class="article-card__arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</section>

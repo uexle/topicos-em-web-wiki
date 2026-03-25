@@ -1,19 +1,10 @@
 ---
-layout: page
+layout: home
 title: Início
 ---
 
-## Artigos da wiki
+## Sobre esta wiki
 
-Novos arquivos `.md` na pasta `_wiki/` passam a aparecer nesta lista automaticamente após o build (no GitHub Pages, após o push).
+Esta página reúne o **histórico** e materiais da disciplina **Tópicos Especiais em Desenvolvimento Web**, servindo como apoio a professores, monitores e alunos.
 
-<ul class="wiki-list">
-{% assign pages = site.wiki | sort: 'title' %}
-{% for p in pages %}
-  <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
-{% endfor %}
-</ul>
-
-{% if site.wiki.size == 0 %}
-<p><em>Nenhum artigo ainda. Adicione um arquivo em <code>_wiki/</code>.</em></p>
-{% endif %}
+Os conteúdos são arquivos em Markdown versionados no repositório; qualquer pessoa com permissão pode **evoluir os artigos** e o site é atualizado no GitHub Pages após o *push*.

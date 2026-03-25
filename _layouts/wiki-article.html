@@ -1,0 +1,22 @@
+---
+layout: default
+---
+---
+layout: default
+---
+<article class="wiki-document">
+  <nav class="breadcrumb" aria-label="Navegação">
+    <a href="{{ '/' | relative_url }}">Início</a>
+    <span class="breadcrumb__sep" aria-hidden="true">/</span>
+    <span class="breadcrumb__current">{{ page.title }}</span>
+  </nav>
+  <header class="wiki-document__header">
+    <h1 class="wiki-document__title">{{ page.title }}</h1>
+  </header>
+  <div class="wiki-document__body prose">
+    {{ content }}
+  </div>
+  <footer class="wiki-document__footer">
+    <a class="back-link" href="{{ '/' | relative_url }}#artigos">← Voltar aos artigos</a>
+  </footer>
+</article>

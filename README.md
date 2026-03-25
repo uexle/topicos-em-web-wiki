@@ -1,60 +1,53 @@
-# Wiki em Markdown (GitHub Pages)
+# Wiki — Tópicos Especiais em Desenvolvimento Web
 
-Site estático com [Jekyll](https://jekyllrb.com/), pronto para [GitHub Pages](https://docs.github.com/pages). Cada arquivo em `_wiki/` vira uma página; a lista na página inicial é gerada automaticamente.
+Site estático com [Jekyll](https://jekyllrb.com/) e [GitHub Pages](https://docs.github.com/pages): identidade visual própria (`assets/css/wiki.css` + `_layouts/`), sem depender do tema Minima para o layout.
 
-## Conteúdo
+## Estrutura
 
 | Caminho | Função |
-|--------|--------|
-| `_wiki/*.md` | Artigos da wiki (um arquivo = uma página) |
-| `index.md` | Página inicial com a lista de artigos (`site.wiki`) |
-| `_config.yml` | Tema, collection `wiki`, URLs |
+|---------|--------|
+| `_wiki/*.md` | Artigos (um arquivo = uma página; aparecem na home como cartões) |
+| `index.md` | Texto “Sobre” na home; lista de artigos é gerada pelo layout `home` |
+| `_config.yml` | Nome da disciplina (`course`), URLs (`url`, `baseurl`, `repo_url`), collection `wiki` |
+| `assets/css/wiki.css` | Cores, tipografia e componentes |
+| `_layouts/default.html`, `home.html`, `wiki-article.html` | Estrutura das páginas |
 
-## Publicar no GitHub Pages
+## Personalizar para seu repositório
 
-1. Crie um repositório no GitHub e envie este projeto (`git init`, commit, `git remote`, `push`).
-2. No repositório: **Settings → Pages**.
-3. Em **Build and deployment**:
-   - **Source**: *GitHub Actions* não é obrigatório para este projeto; use **Deploy from a branch**.
-   - **Branch**: `main` (ou `master`) e pasta **`/` (root)**.
-4. Salve. Em poucos minutos o site ficará em:
-   - **Repositório de usuário** `usuario.github.io`: `https://usuario.github.io/`
-   - **Repositório de projeto** `usuario/repo`: `https://usuario.github.io/repo/`
+Em `_config.yml` ajuste:
 
-Se o site for de **projeto** (ex.: `https://uexle.github.io/topicos-em-web-wiki/`), **é obrigatório** definir `url` e `baseurl`. Sem `baseurl`, o tema Minima aponta CSS/JS para a raiz do domínio e a página fica sem estilo.
+- `url` e `baseurl` — obrigatório para repositórios de **projeto** (para CSS e links).
+- `repo_url` — URL do botão “Repositório” no herói da home.
+- `course` — nome completo, sigla, instituição e texto de abertura (`lead`).
 
-```yaml
-url: "https://SEU-USUARIO.github.io"
-baseurl: "/NOME-DO-REPO"   # mesmo nome do repositório, com barra inicial, sem barra final
-```
+## Novo artigo
 
-Se renomear o repositório, atualize `baseurl` para o novo nome.
-
-## Incluir um artigo novo
-
-1. Adicione `meu-artigo.md` em `_wiki/`.
-2. Coloque no topo do arquivo:
+1. Crie `nome-do-artigo.md` em `_wiki/`.
+2. Front matter mínimo:
 
 ```yaml
 ---
 title: Título na lista
+summary: Opcional — aparece no cartão da home
+order: 10
 ---
 ```
 
-3. Commit e push. O artigo aparece na lista da home e em `/wiki/meu-artigo/`.
+(`order` opcional; padrão `999`. Valores menores sobem na lista.)
+
+3. *Commit* e *push* → o site publica em `/wiki/nome-do-artigo/`.
+
+Detalhes em [\_wiki/como-usar-esta-wiki.md](_wiki/como-usar-esta-wiki.md).
+
+## GitHub Pages
+
+**Settings → Pages → Deploy from a branch**: branch `main`, pasta `/` (root).
 
 ## Testar localmente
 
-Requer [Ruby](https://rubyinstaller.org/) e [Bundler](https://bundler.io/).
-
 ```bash
-cd "3 - Wiki"
 bundle install
 bundle exec jekyll serve
 ```
 
-Abra `http://127.0.0.1:4000` (se usar `baseurl`, acesse `http://127.0.0.1:4000/nome-do-repo`).
-
-## Stack
-
-- **Jekyll** + tema **minima** (suportado nativamente pelo GitHub Pages, sem workflow obrigatório).
+Com `baseurl` definido, acesse `http://127.0.0.1:4000` + `baseurl` (ex.: `http://127.0.0.1:4000/topicos-em-web-wiki/`).

@@ -1,11 +1,22 @@
-title: Wiki
-description: Wiki em Markdown — GitHub Pages + Jekyll
-theme: minima
+title: "Tópicos em Web — Wiki"
+description: "Histórico e materiais da disciplina Tópicos Especiais em Desenvolvimento Web (UFRRJ)."
 
-# Repositório de projeto (usuario.github.io/nome-do-repo): defina url + baseurl (obrigatório para CSS do tema).
-# Site só em usuario.github.io: use url: "" e baseurl: ""
+# Repositório de projeto: url + baseurl obrigatórios para assets e links.
 url: "https://uexle.github.io"
 baseurl: "/topicos-em-web-wiki"
+
+# Identidade da disciplina (usada na home e no topo)
+course:
+  name: "Tópicos Especiais em Desenvolvimento Web"
+  short: "Tópicos em Web"
+  institution: "UFRRJ"
+  lead: |
+    Espaço colaborativo com textos de referência, notas de aula e histórico da disciplina.
+    Novos artigos entram na lista automaticamente ao adicionar arquivos `.md` em `_wiki/`.
+
+repo_url: "https://github.com/uexle/topicos-em-web-wiki"
+
+lang: pt-BR
 
 collections:
   wiki:
@@ -17,4 +28,10 @@ defaults:
       path: ""
       type: wiki
     values:
-      layout: page
+      layout: wiki-article
+      order: 999
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
