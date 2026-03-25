@@ -1,0 +1,20 @@
+title: Wiki
+description: Wiki em Markdown — GitHub Pages + Jekyll
+theme: minima
+
+# Páginas de projeto: use baseurl: "/nome-do-repo" e url: "https://seu-usuario.github.io"
+# Site de usuário (usuario.github.io): deixe os dois vazios como abaixo
+url: ""
+baseurl: ""
+
+collections:
+  wiki:
+    output: true
+    permalink: /wiki/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: wiki
+    values:
+      layout: page
